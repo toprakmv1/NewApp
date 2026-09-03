@@ -5,7 +5,7 @@ import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location';
 import * as Notifications from 'expo-notifications';
 import { useAppStore } from '@/store/app.store';
-import { colors, spacing, typography } from '@/theme/tokens';
+import { colors, spacing } from '@/theme/tokens';
 
 const pages = [
   { title: 'Kıbleni bul.', body: 'Yönünü bul. Vaktini kaçırma. Kalbine iyi bak.' },

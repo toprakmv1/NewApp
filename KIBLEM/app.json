@@ -6,6 +6,12 @@
     "orientation": "portrait",
     "scheme": "kiblem",
     "userInterfaceStyle": "dark",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#071214"
+    },
     "newArchEnabled": true,
     "plugins": [
       "expo-router",
@@ -30,10 +36,25 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.kiblem.app"
+      "bundleIdentifier": "com.kiblem.app",
+      "buildNumber": "1",
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"]
+      }
     },
     "android": {
-      "package": "com.kiblem.app"
+      "package": "com.kiblem.app",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#071214"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "VIBRATE",
+        "RECEIVE_BOOT_COMPLETED"
+      ]
     },
     "extra": {
       "router": {

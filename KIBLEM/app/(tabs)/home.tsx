@@ -10,7 +10,7 @@ import { colors, radius, spacing } from '@/theme/tokens';
 export default function Home() {
   const [location, setLocation] = useState<Location.LocationObject | null>(null);
   const [prayers, setPrayers] = useState<PrayerTime[]>([]);
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
     const timer = setInterval(() => setNow(Date.now()), 1000);

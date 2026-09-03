@@ -1,4 +1,4 @@
-import { Coordinates, CalculationMethod, CalculationParameters, PrayerTimes as AdhanPrayerTimes } from 'adhan';
+import { Coordinates, CalculationMethod, Madhab, PrayerTimes as AdhanPrayerTimes } from 'adhan';
 import { PrayerTime, PrayerName } from '@/types/domain';
 
 const labels: Record<PrayerName, string> = {
@@ -11,10 +11,10 @@ export function getPrayerTimes(date: Date, latitude: number, longitude: number):
   // Türkiye default foundation: Muslim World League + Hanafi Asr is a configurable
   // starting point. Production should expose method/madhhab/high-latitude/offset config.
   const params = CalculationMethod.MuslimWorldLeague();
-  params.madhab = 'Hanafi';
+  params.madhab = Madhab.Hanafi;
   const times = new AdhanPrayerTimes(coordinates, date, params);
 
-  const values: Array<[PrayerName, Date]> = [
+  const values: [PrayerName, Date][] = [
     ['fajr', times.fajr], ['sunrise', times.sunrise], ['dhuhr', times.dhuhr],
     ['asr', times.asr], ['maghrib', times.maghrib], ['isha', times.isha]
   ];
