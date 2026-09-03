@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "KIBLEM",
+    "slug": "kiblem",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "kiblem",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Kıbleyi ve namaz vakitlerini doğru hesaplayabilmek için konumuna ihtiyacımız var."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "sounds": []
+        }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "Kıble pusulasının yönünü algılamak için hareket sensörüne erişim gerekir."
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kiblem.app"
+    },
+    "android": {
+      "package": "com.kiblem.app"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      }
+    },
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
