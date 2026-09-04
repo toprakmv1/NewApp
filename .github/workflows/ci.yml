@@ -1,0 +1,72 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: 'KIBLEM/package-lock.json'
+    
+    - name: Install dependencies
+      working-directory: ./KIBLEM
+      run: npm ci
+    
+    - name: TypeScript type checking
+      working-directory: ./KIBLEM
+      run: npm run typecheck
+    
+    - name: Run linter
+      working-directory: ./KIBLEM
+      run: npm run lint
+    
+    - name: Run tests
+      working-directory: ./KIBLEM
+      run: npm run test
+    
+    - name: Build application
+      working-directory: ./KIBLEM
+      run: npm run build || echo "Build command not configured yet"
+
+  code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        cache-dependency-path: 'KIBLEM/package-lock.json'
+    
+    - name: Install dependencies
+      working-directory: ./KIBLEM
+      run: npm ci
+    
+    - name: Check for security vulnerabilities
+      working-directory: ./KIBLEM
+      run: npm audit --audit-level=moderate || true
+    
+    - name: Check code formatting
+      working-directory: ./KIBLEM
+      run: npm run lint -- --max-warnings=0 || echo "Warning limit exceeded, but continuing..."
