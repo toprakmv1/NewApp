@@ -1,4 +1,4 @@
-# CI/CD Setup Documentation
+# Add CI/CD GitHub Actions workflow and test configuration" 
 
 ## Overview
 Bu dokümanda NewApp projesi için kurulmuş olan GitHub Actions CI/CD pipeline ve test framework'ü açıklanmaktadır.
