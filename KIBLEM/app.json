@@ -7,14 +7,16 @@
     "scheme": "kiblem",
     "userInterfaceStyle": "dark",
     "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#071214"
-    },
-    "newArchEnabled": true,
     "plugins": [
       "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#071214"
+        }
+      ],
       [
         "expo-location",
         {
@@ -32,14 +34,17 @@
         {
           "motionPermission": "Kıble pusulasının yönünü algılamak için hareket sensörüne erişim gerekir."
         }
-      ]
+      ],
+      "expo-splash-screen"
     ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.kiblem.app",
       "buildNumber": "1",
       "infoPlist": {
-        "UIBackgroundModes": ["remote-notification"]
+        "UIBackgroundModes": [
+          "remote-notification"
+        ]
       }
     },
     "android": {
@@ -53,16 +58,22 @@
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
         "VIBRATE",
-        "RECEIVE_BOOT_COMPLETED"
+        "RECEIVE_BOOT_COMPLETED",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
       ]
     },
     "extra": {
       "router": {
         "origin": false
+      },
+      "eas": {
+        "projectId": "ca418860-f970-41bf-886d-eff37892facf"
       }
     },
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "owner": "toprakmv"
   }
 }
