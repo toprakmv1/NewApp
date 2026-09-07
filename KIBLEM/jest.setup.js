@@ -1,5 +1,4 @@
 // Jest setup file for test configuration
-import 'jest-expo/extend-expect';
 
 // Mock async storage
 jest.mock('@react-native-async-storage/async-storage', () => ({
